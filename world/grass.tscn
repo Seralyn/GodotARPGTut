@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cgbuqogs28qw1"]
+
+[ext_resource type="Script" uid="uid://btq8bd3skaswr" path="res://world/grass.gd" id="1_6gvtj"]
+[ext_resource type="Texture2D" uid="uid://cbir2yx8t1e2a" path="res://world/grass.png" id="1_44d1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sp5p"]
+radius = 8.0
+
+[node name="Grass" type="Node2D" unique_id=2089550467]
+y_sort_enabled = true
+script = ExtResource("1_6gvtj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=596811948]
+texture = ExtResource("1_44d1o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1931219952]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1563255113]
+shape = SubResource("CircleShape2D_4sp5p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

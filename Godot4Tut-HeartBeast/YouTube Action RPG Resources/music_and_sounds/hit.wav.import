@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://by4si6ej6ystf"
+path="res://.godot/imported/hit.wav-fc43585c9cfafd5be1e75523a46d3acb.sample"
+
+[deps]
+
+source_file="res://Godot4Tut-HeartBeast/YouTube Action RPG Resources/music_and_sounds/hit.wav"
+dest_files=["res://.godot/imported/hit.wav-fc43585c9cfafd5be1e75523a46d3acb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
