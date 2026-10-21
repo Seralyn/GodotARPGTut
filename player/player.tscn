@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tcklnvuaefq" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dl20fgu0afmne" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://cvee8rwot661n" path="res://shadows/medium_shadow.png" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://ddlivkb8ksqt6" path="res://damage_boxes/hitbox.gd" id="4_yw30f"]
 
 [sub_resource type="Animation" id="Animation_rkbax"]
 length = 0.001
@@ -21,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("SwordHitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,7 +34,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/path = NodePath("SwordHitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -62,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("SwordHitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/path = NodePath("SwordHitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -103,7 +104,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("SwordHitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -115,7 +116,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/path = NodePath("SwordHitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +145,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("SwordHitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -156,7 +157,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/path = NodePath("SwordHitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -185,7 +186,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("SwordHitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -197,7 +198,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/path = NodePath("SwordHitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -633,8 +634,12 @@ position_smoothing_enabled = true
 position = Vector2(0, -8)
 polygon = PackedVector2Array(0, 13, 6, 3, 0, -5, -6, 3)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2129732695]
+[node name="SwordHitbox" type="Area2D" parent="." unique_id=1129281092]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://ddlivkb8ksqt6"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1475606785]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordHitbox" unique_id=1475606785]
 polygon = PackedVector2Array(7, -3, 7, 0, 18, 0, 19, -1, 19, -2, 18, -3)
 disabled = true

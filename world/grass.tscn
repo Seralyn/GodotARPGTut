@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btq8bd3skaswr" path="res://world/grass.gd" id="1_6gvtj"]
 [ext_resource type="Texture2D" uid="uid://cbir2yx8t1e2a" path="res://world/grass.png" id="1_44d1o"]
+[ext_resource type="Script" uid="uid://bjcbwda0um8uh" path="res://damage_boxes/hurtbox.gd" id="3_aervy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sp5p"]
 radius = 8.0
@@ -13,9 +14,11 @@ script = ExtResource("1_6gvtj")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=596811948]
 texture = ExtResource("1_44d1o")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1931219952]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1348921775]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("3_aervy")
+metadata/_custom_type_script = "uid://bjcbwda0um8uh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1563255113]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1563255113]
 shape = SubResource("CircleShape2D_4sp5p")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

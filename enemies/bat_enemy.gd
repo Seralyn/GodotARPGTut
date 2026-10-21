@@ -1,26 +1,30 @@
 extends CharacterBody2D
 
 const SPEED = 30
+const FRICTION = 500
 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @export var chase_range: = 64
-#@onready var area_2d: Area2D = $Area2D
-@onready var hurtbox_container_a_2d: Area2D = $"HurtboxContainer-A2D"
+@onready var hurtbox: Hurtbox = $Hurtbox
+
+
 
 func _ready() -> void:
-	hurtbox_container_a_2d.area_entered.connect(func(other_area_2d: Area2D):
-			queue_free()
+	hurtbox.hurt.connect(func(other_hitbox: Hitbox):
+			velocity = other_hitbox.knockback_direction * 100
+			playback.start("HitState")
+			print("changed to the hit state")
 	)
 	
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var state = playback.get_current_node()
 	match state:
-		"Idle": pass
-		"Chase": 
+		"IdleState": pass
+		"ChaseState": 
 			var player = get_player()
 			if player is Player:
 				velocity = global_position.direction_to(player.global_position) * SPEED
@@ -29,7 +33,9 @@ func _physics_process(_delta: float) -> void:
 				velocity = Vector2.ZERO
 				
 			move_and_slide()
-
+		"HitState":
+			move_and_slide()
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 func get_player() -> Player:
 	return get_tree().get_first_node_in_group("player")
 	
