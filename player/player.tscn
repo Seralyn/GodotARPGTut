@@ -27,7 +27,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [PackedVector2Array(7, -3, 7, 0, 18, 0, 19, -1, 19, -2, 18, -3)]
 }
 tracks/2/type = "value"
@@ -590,15 +590,16 @@ states/RollState/node = SubResource("AnimationNodeBlendSpace2D_g6k8r")
 states/RollState/position = Vector2(409.04144, -51.452347)
 states/Start/position = Vector2(201.33928, 95.43692)
 transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_7pqkx"), "MoveState", "AttackState", SubResource("AnimationNodeStateMachineTransition_knn7v"), "AttackState", "MoveState", SubResource("AnimationNodeStateMachineTransition_uw77l"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_boad6"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_rgyib")]
-graph_offset = Vector2(-532, -148)
+graph_offset = Vector2(-470, -86)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4sp5p"]
-graph_offset = Vector2(-332.14285, 0)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_uw77l")
 nodes/StateMachine/position = Vector2(35.714287, 125)
 node_connections = [&"output", 0, &"StateMachine"]
 
-[node name="Player" type="CharacterBody2D" unique_id=346590269]
+[node name="Player" type="CharacterBody2D" unique_id=346590269 groups=["player"]]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_rkbax")
 

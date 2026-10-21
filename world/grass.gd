@@ -1,7 +1,8 @@
 extends Node2D
 
 const GRASS_EFFECT = preload("res://effects/grass_effect.tscn")
-
+# the above does the same as the below, somehow
+#@export var GRASS_EFFECT: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
