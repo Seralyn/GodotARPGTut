@@ -84,7 +84,7 @@ advance_expression = "can_see_player()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6o37f"]
 advance_mode = 2
-advance_expression = "velocity = Vector2(0,0)"
+advance_expression = "velocity.is_zero_approx()"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6o37f"]
 states/ChaseState/node = SubResource("AnimationNodeAnimation_5m2e4")
