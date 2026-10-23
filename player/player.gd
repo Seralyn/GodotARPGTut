@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var playback = animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 ## this gives us access to the methods of AnimationNodeStateMachinePlayback so we can use autocomplete
 ## down below in var state = ....
-@onready var sword_hitbox: Hitbox = $SwordHitbox
+
 
 const SPEED = 100.0
 const ROLL_SPEED = 125.0
@@ -25,7 +25,7 @@ func move_state(delta: float) -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if input_vector != Vector2.ZERO:
-		sword_hitbox.knockback_direction = input_vector.normalized()
+		
 		last_input_vector = input_vector
 		var direction_vector: = Vector2(input_vector.x, -input_vector.y)
 		update_blend_positions(direction_vector)

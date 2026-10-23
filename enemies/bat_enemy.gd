@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 30
 const FRICTION = 500
 
+@export var stats: Stats
+
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -14,7 +16,7 @@ const FRICTION = 500
 
 func _ready() -> void:
 	hurtbox.hurt.connect(take_hit.call_deferred)
-	
+	stats.no_health.connect(queue_free)
 
 func _physics_process(delta: float) -> void:
 	var state = playback.get_current_node()
@@ -34,9 +36,10 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			
 func take_hit(other_hitbox: Hitbox):
-	velocity = other_hitbox.knockback_direction * 100
+	stats.health -= other_hitbox.damage
+	velocity = other_hitbox.knockback_direction * other_hitbox.knockback_amount
 	playback.start("HitState")
-	print("changed to the hit state")
+	
 	
 	
 func get_player() -> Player:
